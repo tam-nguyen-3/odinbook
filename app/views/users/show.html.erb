@@ -1,17 +1,30 @@
+<%= render "shared/navbar" %>
 <div class="max-w-3xl mx-auto mt-10 px-4 space-y-8">
   <div class="flex justify-between items-center mb-4">
     <h1 class="text-2xl font-bold text-gray-800">Profile</h1>
     <%= link_to "← Back to feed", posts_path, class: "text-blue-600 hover:underline text-sm" %>
   </div>
 
-  <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-    <h1 class="text-2xl font-bold text-gray-800 mb-2"><%= @user.name %></h1>
-    <p class="text-sm text-gray-600 mb-4"><%= @user.email %></p>
-    <div class="flex space-x-6 text-sm text-gray-700">
-      <span><strong><%= @user.followers.count %></strong> Followers</span>
-      <span><strong><%= @user.following.count %></strong> Following</span>
+  <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 grid grid-cols-2 items-start">
+    <!-- Left: User Info -->
+    <div>
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, class: "w-40 h-40 rounded-full object-cover border border-gray-300 shadow-sm mb-4" %>
+      <% end %>
+      <h1 class="text-2xl font-bold text-gray-800 mb-2"><%= @user.name %></h1>
+      <p class="text-sm text-gray-600 mb-4"><%= @user.email %></p>
+      <div class="flex space-x-6 text-sm text-gray-700">
+        <span><strong><%= @user.followers.count %></strong> Followers</span>
+        <span><strong><%= @user.following.count %></strong> Following</span>
+      </div>
+    </div>
+
+    <!-- Right: Edit Button -->
+    <div class="flex justify-end">
+      <%= link_to "Edit Avatar", edit_user_path, class: "bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700 transition" %>
     </div>
   </div>
+
 
   <div class="space-y-4">
     <h2 class="text-xl font-semibold text-gray-800">Posts by <%= @user.name %></h2>
