@@ -37,12 +37,15 @@ gem "kamal", require: false
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
-gem 'faker'
+gem 'faker', group: :development
 
 gem 'letter_opener', group: :development
 
 gem 'image_processing'
 
+gem 'dotenv-rails'
+
+gem 'sd_notify', '~> 0.1.0' # hotfix not actually used
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -62,6 +65,10 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem 'capistrano'
+  gem 'capistrano3-puma', '6.0.0.beta.1' # supports puma 6+
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm' # capistrano-rbenv for rbenv
 end
 
 group :test do
