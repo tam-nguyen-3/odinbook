@@ -55,7 +55,11 @@ set :puma_preload_app, true
 set :puma_init_active_record, true
 set :puma_preload_app, false
 
-set :ssh_options, { forward_agent: false, user: 'ec2-user', keys: %w(~/.ssh/id_rsa.pub) }
+set :ssh_options, {
+  forward_agent: true,
+  user: 'ec2-user',
+  keys: %w(~/.ssh/id_rsa)
+}
 
 # nginx
 set :nginx_config_name, 'odinbook'
