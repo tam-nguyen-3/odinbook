@@ -1,0 +1,13 @@
+<div class="flex items-center gap-4 mb-4">
+  <% if user.avatar.attached? %>
+    <%= image_tag user.avatar, class: "w-12 h-12 rounded-full object-cover border border-gray-300" %>
+  <% end %>
+    <div>
+      <p class="text-xs text-gray-500 font-bold underline hover:text-blue-600">
+        <%= link_to user.name, user_path(user) %>
+      </p>
+      <p class="text-xs text-gray-500">
+        <%= user.email %>
+      </p>
+    </div>
+</div>

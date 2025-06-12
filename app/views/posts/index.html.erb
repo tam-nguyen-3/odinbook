@@ -10,15 +10,7 @@
   <!-- Posts List -->
   <div class="space-y-4">
     <% @posts.each do |post| %>
-      <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
-        <% if user_signed_in? %>
-          <p class="text-xs text-gray-500 mb-1">
-            <strong>By:</strong> <%= post.user.email %>
-          </p>
-        <% end %>
-        <p class="text-gray-800 text-sm mb-2"><%= post.content %></p>
-        <%= link_to "💬 View Thread", post_path(post), class: "text-blue-600 text-sm hover:underline" %>
-      </div>
+      <%= render post %>
     <% end %>
   </div>
 </div>

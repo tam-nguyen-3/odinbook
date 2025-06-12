@@ -11,6 +11,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    @post.images.attach(params[:images])
 
     if @post.save
       redirect_to posts_path, notice: "Post was successfully created"
@@ -25,6 +26,6 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.expect(post: [ :content ])
+      params.expect(post: [ :content, images: [] ])
     end
 end

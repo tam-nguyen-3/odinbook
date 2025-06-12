@@ -1,0 +1,25 @@
+<div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+  <div class="flex items-center gap-4 mb-4">
+    <% if post.user.avatar.attached? %>
+      <%= image_tag post.user.avatar, class: "w-12 h-12 rounded-full object-cover border border-gray-300" %>
+    <% end %>
+      <div>
+        <p class="text-xs text-gray-500 font-bold underline hover:text-blue-600">
+          <%= link_to post.user.name, user_path(post.user) %>
+        </p>
+        <p class="text-xs text-gray-500">
+          <%= post.user.email %>
+        </p>
+      </div>
+  </div>
+  <p class="text-gray-800 text-sm mb-2"><%= post.content %></p>
+  <div class="flex overflow-x-auto max-h-60">
+    <% if post.images.attached? %>
+      <% post.images.each do |image| %>
+        <%= image_tag image, class: "max-h-60 rounded-sm object-cover border border-gray-300" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= link_to "💬 View Thread", post_path(post), class: "text-blue-600 text-sm hover:underline" %>
+</div>

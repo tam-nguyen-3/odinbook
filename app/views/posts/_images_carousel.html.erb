@@ -1,0 +1,7 @@
+<div class="my-4 flex overflow-x-auto max-h-60">
+  <% if post.images.attached? %>
+    <% post.images.each do |image| %>
+      <%= image_tag image, class: "max-h-60 rounded-sm object-cover border border-gray-300" %>
+    <% end %>
+  <% end %>
+</div>

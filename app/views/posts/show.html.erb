@@ -2,9 +2,7 @@
 <%= render "shared/back_to_feed" %>
 
 <div class="max-w-2xl mx-auto mt-4 px-4 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-  <p class="text-sm text-gray-500 mb-1">
-    <%= link_to @post.user.name, user_path(@post.user), class: "font-bold underline hover:text-blue-600" %> wrote:
-  </p>
+  <%= render "user_blob", user: @post.user %>
   <p class="text-gray-800 text-base mb-4"><%= @post.content %></p>
 
   <div class="flex items-center space-x-4 text-sm text-gray-600">
@@ -17,14 +15,15 @@
             class: "bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition" %>
     <% end %>
   </div>
+
+  <%= render "images_carousel", post: @post %>
+
 </div>
 
 <div class="max-w-2xl mx-auto mt-6 px-4 space-y-4">
   <% @post.comments.each do |comment| %>
     <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-      <p class="text-sm text-gray-500 mb-1">
-        <strong><%= comment.user.name %></strong>:
-      </p>
+      <%= render "user_blob", user: comment.user %>
       <p class="text-gray-800 text-sm"><%= comment.content %></p>
     </div>
   <% end %>
