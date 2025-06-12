@@ -35,3 +35,10 @@
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Other
+config/database.yml
+public/*
+.env
+coverage/
+.rspec
