@@ -56,7 +56,7 @@ set :puma_init_active_record, true
 set :puma_preload_app, false
 
 set :ssh_options, {
-  forward_agent: true,
+  forward_agent: false,
   user: 'ec2-user',
   keys: %w(~/.ssh/id_rsa)
 }
