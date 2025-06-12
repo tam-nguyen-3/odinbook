@@ -3,13 +3,14 @@ lock "~> 3.19.2"
 
 set :application, "odinbook"
 set :repo_url, "git@github.com:tam-nguyen-3/odinbook.git"
+set :user, 'rails'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :branch, 'main'
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/var/www/odinbook"
+set :deploy_to, "/home/ec2-user/odinbook"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -64,4 +65,3 @@ set :ssh_options, {
 # nginx
 set :nginx_config_name, 'odinbook'
 set :nginx_server_name, 'odinbook'
-set :nginx_use_ssl, false # will be handled by certbot

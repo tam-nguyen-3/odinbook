@@ -432,6 +432,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   capistrano
+  capistrano-bundler
   capistrano-rails
   capistrano-rvm
   capistrano3-puma (= 6.0.0.beta.1)
