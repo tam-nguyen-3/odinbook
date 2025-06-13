@@ -60,6 +60,8 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
+  gem 'bundler'
+
 end
 
 group :development do
@@ -68,7 +70,7 @@ group :development do
   gem 'capistrano', require: false
   gem 'capistrano3-puma', '6.0.0.beta.1', require: false # supports puma 6+
   gem 'capistrano-rails', require: false
-  gem 'capistrano-rvm', require: false # capistrano-rbenv for rbenv
+  # gem 'capistrano-rvm', require: false # capistrano-rbenv for rbenv
   gem 'capistrano-bundler', require: false
 end
 

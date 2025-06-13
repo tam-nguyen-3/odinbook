@@ -34,7 +34,7 @@ require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
 require 'capistrano/puma'
 require 'capistrano/puma/nginx'
-require 'capistrano/rvm'
+# require 'capistrano/rvm'
 install_plugin Capistrano::Puma
 install_plugin Capistrano::Puma::Systemd
 # require "capistrano/passenger"
