@@ -3,14 +3,14 @@ lock "~> 3.19.2"
 
 set :application, "odinbook"
 set :repo_url, "git@github.com:tam-nguyen-3/odinbook.git"
-set :user, 'rails'
+set :user, 'deploy'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :branch, 'main'
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/ec2-user/odinbook"
+set :deploy_to, "/home/deploy/odinbook"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -58,7 +58,7 @@ set :puma_preload_app, false
 
 set :ssh_options, {
   forward_agent: false,
-  user: 'ec2-user',
+  user: 'deploy',
   keys: %w(~/.ssh/id_rsa)
 }
 
