@@ -41,7 +41,7 @@ set :keep_releases, 2
 # set :ssh_options, verify_host_key: :secure
 
 # puma
-set :puma_workers, 0
+set :puma_workers, 2
 set :puma_worker_timeout, nil
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
