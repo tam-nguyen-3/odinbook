@@ -40,29 +40,29 @@ plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]
 # In other environments, only set the PID file if requested.
 pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
 
-directory "/home/deploy/odinbook/current"
-rackup "/home/deploy/odinbook/current/config.ru"
-environment "production"
+# directory "/home/deploy/odinbook/current"
+# rackup "/home/deploy/odinbook/current/config.ru"
+# environment "production"
 
-pidfile "/home/deploy/odinbook/shared/tmp/pids/puma.pid"
-state_path "/home/deploy/odinbook/shared/tmp/pids/puma.state"
-stdout_redirect "/home/deploy/odinbook/shared/log/puma_access.log", "/home/deploy/odinbook/shared/log/puma_error.log", true
+# pidfile "/home/deploy/odinbook/shared/tmp/pids/puma.pid"
+# state_path "/home/deploy/odinbook/shared/tmp/pids/puma.state"
+# stdout_redirect "/home/deploy/odinbook/shared/log/puma_access.log", "/home/deploy/odinbook/shared/log/puma_error.log", true
 
-threads 0, 16
-bind "unix:///home/deploy/odinbook/shared/tmp/sockets/puma.sock"
-workers 2
+# threads 0, 16
+# bind "unix:///home/deploy/odinbook/shared/tmp/sockets/puma.sock"
+# workers 2
 
-restart_command "/usr/lib/fullstaq-ruby/versions/3.4/bin/bundle exec puma"
+# restart_command "/usr/lib/fullstaq-ruby/versions/3.4/bin/bundle exec puma"
 
-preload_app!
+# preload_app!
 
-on_restart do
-  puts 'Refreshing Gemfile'
-  ENV["BUNDLE_GEMFILE"] = "/home/deploy/apps/sample_app_production/current/Gemfile"
-end
+# on_restart do
+#   puts 'Refreshing Gemfile'
+#   ENV["BUNDLE_GEMFILE"] = "/home/deploy/apps/sample_app_production/current/Gemfile"
+# end
 
-on_worker_boot do
-  ActiveSupport.on_load(:active_record) do
-    ActiveRecord::Base.establish_connection
-  end
-end
+# on_worker_boot do
+#   ActiveSupport.on_load(:active_record) do
+#     ActiveRecord::Base.establish_connection
+#   end
+# end
