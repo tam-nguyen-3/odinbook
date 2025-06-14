@@ -29,7 +29,7 @@ append :linked_files, "config/database.yml", 'config/master.key'
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "vendor", "storage"
 
 # Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, { path: "/usr/lib/fullstaq-ruby/versions/3.4/bin:$PATH" }
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
@@ -60,16 +60,11 @@ set :puma_enable_socket_service, true # mendatory in our case
 set :puma_init_active_record, true
 set :puma_preload_app, false
 
-set :bundle_dir, "#{shared_path}/vendor/bundle"
 set :bundle_flags, "--deployment"
-set :bundle_cmd, "bundle install --path #{shared_path}/vendor/bundle"
+set :bundle_path, nil
 
 set :ssh_options, {
   forward_agent: false,
   user: 'deploy',
   keys: %w(~/.ssh/id_rsa)
 }
-
-# nginx
-set :nginx_config_name, 'odinbook'
-set :nginx_server_name, 'odinbook'
