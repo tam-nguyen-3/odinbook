@@ -39,3 +39,18 @@ plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]
 # Specify the PID file. Defaults to tmp/pids/server.pid in development.
 # In other environments, only set the PID file if requested.
 pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
+
+directory "/home/deploy/odinbook/current"
+rackup "/home/deploy/odinbook/current/config.ru"
+environment 'production'
+
+pidfile '/home/deploy/odinbook/shared/tmp/pids/puma.pid'
+state_path '/home/deploy/odinbook/shared/tmp/pids/puma.state'
+stdout_redirect '/home/deploy/odinbook/shared/log/puma_access.log', '/home/deploy/odinbook/shared/log/puma_error.log', true
+
+threads 0, 16
+bind 'unix:///home/deploy/odinbook/shared/tmp/sockets/puma.sock'
+workers 2
+
+restart_command '/usr/lib/fullstaq-ruby/versions/3.4/bin/bundle exec puma'
+prune_bundler

@@ -68,7 +68,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem 'capistrano', require: false
-  gem 'capistrano3-puma'
+  gem 'capistrano3-puma', github: "seuros/capistrano-puma"
   gem 'capistrano-rails', require: false
   # gem 'capistrano-rvm', require: false # capistrano-rbenv for rbenv
   gem 'capistrano-bundler', require: false
