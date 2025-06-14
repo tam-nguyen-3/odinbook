@@ -1,3 +1,5 @@
+#!/usr/bin/env/puma
+
 # This configuration file will be evaluated by Puma. The top-level methods that
 # are invoked here are part of Puma's configuration DSL. For more information
 # about methods provided by the DSL, see https://puma.io/puma/Puma/DSL.html.
@@ -24,6 +26,7 @@
 # Any libraries that use a connection pool or another resource pool should
 # be configured to provide at least as many connections as the number of
 # threads. This includes Active Record's `pool` parameter in `database.yml`.
+
 threads_count = ENV.fetch("RAILS_MAX_THREADS", 3)
 threads threads_count, threads_count
 
@@ -38,31 +41,29 @@ plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]
 
 # Specify the PID file. Defaults to tmp/pids/server.pid in development.
 # In other environments, only set the PID file if requested.
-pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
+# pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
 
-# directory "/home/deploy/odinbook/current"
-# rackup "/home/deploy/odinbook/current/config.ru"
-# environment "production"
+directory "/home/deploy/odinbook/current"
+rackup "/home/deploy/odinbook/current/config.ru"
+environment "production"
 
-# pidfile "/home/deploy/odinbook/shared/tmp/pids/puma.pid"
-# state_path "/home/deploy/odinbook/shared/tmp/pids/puma.state"
-# stdout_redirect "/home/deploy/odinbook/shared/log/puma_access.log", "/home/deploy/odinbook/shared/log/puma_error.log", true
+pidfile "/home/deploy/odinbook/shared/tmp/pids/puma.pid"
+state_path "/home/deploy/odinbook/shared/tmp/pids/puma.state"
+stdout_redirect "/home/deploy/odinbook/shared/log/puma_access.log", "/home/deploy/odinbook/shared/log/puma_error.log", true
 
-# threads 0, 16
-# bind "unix:///home/deploy/odinbook/shared/tmp/sockets/puma.sock"
-# workers 2
+bind "unix:///home/deploy/odinbook/shared/tmp/sockets/puma.sock"
 
-# restart_command "/usr/lib/fullstaq-ruby/versions/3.4/bin/bundle exec puma"
+workers 2
 
-# preload_app!
+preload_app!
 
-# on_restart do
-#   puts 'Refreshing Gemfile'
-#   ENV["BUNDLE_GEMFILE"] = "/home/deploy/apps/sample_app_production/current/Gemfile"
-# end
+on_restart do
+  puts "Refreshing Gemfile"
+  ENV["BUNDLE_GEMFILE"] = "/home/deploy/odinbook/current/Gemfile"
+end
 
-# on_worker_boot do
-#   ActiveSupport.on_load(:active_record) do
-#     ActiveRecord::Base.establish_connection
-#   end
-# end
+on_worker_boot do
+  ActiveSupport.on_load(:active_record) do
+    ActiveRecord::Base.establish_connection
+  end
+end
