@@ -61,7 +61,7 @@ set :puma_init_active_record, true
 set :puma_preload_app, false
 
 set :bundle_flags, "--deployment"
-set :bundle_path, nil
+# set :bundle_path, nil
 
 set :ssh_options, {
   forward_agent: false,
