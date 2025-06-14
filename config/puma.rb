@@ -52,11 +52,13 @@ threads 0, 16
 bind "unix:///home/deploy/odinbook/shared/tmp/sockets/puma.sock"
 workers 2
 
+restart_command "/usr/lib/fullstaq-ruby/versions/3.4/bin/bundle exec puma"
+
 preload_app!
 
 on_restart do
-  puts "Refreshing Gemfile"
-  ENV["BUNDLE_GEMFILE"] = "/home/deploy/odinbook/current/Gemfile"
+  puts 'Refreshing Gemfile'
+  ENV["BUNDLE_GEMFILE"] = "/home/deploy/apps/sample_app_production/current/Gemfile"
 end
 
 on_worker_boot do
